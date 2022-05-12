@@ -1,0 +1,29 @@
+package com.votre.drools.business;
+
+import com.votre.drools.dto.InitValidateRuleDTO
+import com.votre.drools.dto.OrderDTO
+
+rule "Zone for 130"
+	when 
+		$InitValidateRuleDTO: InitValidateRuleDTO(zone=="130")
+	then
+    	System.out.println("Zone: " + $InitValidateRuleDTO.getZone() );
+		OrderDTO $orderDTO = new OrderDTO();    
+		$orderDTO.setType("PVE");
+		$orderDTO.setDiscount(15);
+		$orderDTO.setStatus("PRE-CONFIRMED");
+		$orderDTO.setShipto(false);
+		$InitValidateRuleDTO.setOrder($orderDTO);
+	end
+rule "Zone for 501"
+	when 
+		$InitValidateRuleDTO: InitValidateRuleDTO(zone=="501")
+	then
+		System.out.println("Zone: " + $InitValidateRuleDTO.getZone() );
+		OrderDTO $orderDTO = new OrderDTO();
+		$orderDTO.setType("PAZ");
+		$orderDTO.setDiscount(250);
+		$orderDTO.setStatus("CONFIRMED");
+		$orderDTO.setShipto(true);
+		$InitValidateRuleDTO.setOrder($orderDTO);
+	end

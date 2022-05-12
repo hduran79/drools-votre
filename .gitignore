@@ -1,0 +1,16 @@
+# root
+.apt_generated
+.apt_generated_tests
+.settings
+target
+.classpath
+.factorypath
+.project
+.metadata
+.recommenders
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
